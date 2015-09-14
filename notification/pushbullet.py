@@ -59,7 +59,7 @@ options:
         required: false
 
 notes:
-   - Requires pushbullet.py Python package on the remote host.
+   - Requires pushbullet.py (>= 0.8.1) Python package on the remote host.
      You can install it via pip with ($ pip install pushbullet.py).
      See U(https://github.com/randomchars/pushbullet.py)
 '''
@@ -94,7 +94,7 @@ EXAMPLES = '''
 '''
 
 try:
-    from pushbullet import PushBullet
+    from pushbullet import Pushbullet
     from pushbullet.errors import InvalidKeyError, PushError
 except ImportError:
     pushbullet_found = False
@@ -133,7 +133,7 @@ def main():
 
     # Init pushbullet 
     try:
-        pb = PushBullet(api_key)
+        pb = Pushbullet(api_key)
         target = None
     except InvalidKeyError:
         module.fail_json(msg="Invalid api_key")
